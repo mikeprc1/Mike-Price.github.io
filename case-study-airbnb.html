@@ -1,9 +1,480 @@
+
+I'm trying to create an online portfolio. What's the best way to publish it? ie- should I buy a domain and site? Should I just put it in guthub? What's the best way
+
+3:57 PM
+Here are the main options, each with different tradeoffs:
+
+GitHub Pages (Free)
+
+Host directly from a GitHub repo at yourname.github.io
+Great for developers — shows you know Git
+Free, reliable, and easy to set up
+You can still connect a custom domain later if you want
+Buy a Custom Domain + Hosting
+
+Something like yourname.com looks the most professional
+Domains are cheap (~$10–15/year via Namecheap, Google Domains, etc.)
+You can point a custom domain to GitHub Pages for free hosting, so you get the best of both worlds
+Separate paid hosting (Netlify, Vercel, etc.) is only really necessary for backend/server-side features
+Website Builders (Squarespace, Wix, Webflow)
+
+Easiest to set up, great templates, no coding required
+Cost $10–25/month
+Less impressive to technical employers since it shows less technical skill
+Good if design matters more than showing dev skills
+My recommendation depends on your field:
+
+Developer / engineer → GitHub Pages + custom domain. It's free to host, costs ~$12/year for a domain, and the fact that it runs on GitHub is itself a signal of competence.
+Designer → Webflow or a custom domain with a polished static site. Aesthetics matter more here.
+Non-technical creative → Squarespace or Wix. Fastest path to something that looks great.
+The sweet spot for most people is GitHub Pages + a custom domain — you get a professional URL, zero hosting costs, and full control over the code. Want help building the actual site, setting it up on GitHub Pages, or something else?
+
+OK. Let's go with github and custom domain. What would i do?
+
+3:58 PM
+Here's the step-by-step process:
+
+1. Buy a Domain (~$12/year)
+Go to Namecheap.com or Squarespace Domains (formerly Google Domains)
+Search for yourname.com (or .dev, .io, .me — all work great)
+Buy it and keep the tab open — you'll need to configure DNS settings later
+2. Create Your Portfolio Site
+You have two paths:
+
+Build it yourself — HTML/CSS/JS files in a folder (Claude can help you build this!)
+Use a Jekyll theme — GitHub Pages has built-in support for Jekyll themes, lots of free portfolio templates available at jekyllthemes.io
+3. Set Up GitHub Pages
+Create a GitHub account if you don't have one
+Create a new repo named exactly yourusername.github.io
+Push your site files to that repo
+Go to repo Settings → Pages and make sure it's set to deploy from your main branch
+Your site will be live at https://yourusername.github.io within a few minutes
+4. Connect Your Custom Domain
+In GitHub (repo Settings → Pages → Custom Domain):
+
+Type in your domain (e.g. www.yourname.com) and save
+GitHub will show you some DNS values to configure
+In Namecheap (or wherever you bought the domain):
+
+Go to DNS settings
+Add the 4 A records GitHub provides pointing to their servers
+Add a CNAME record pointing www → yourusername.github.io
+Wait 15–30 min for DNS to propagate
+5. Enable HTTPS
+Back in GitHub Pages settings, check "Enforce HTTPS" once it becomes available (usually within an hour of DNS propagating)
+This gives you the padlock 🔒 and makes your site look trustworthy
+The whole thing costs ~$12/year (just the domain) and takes about an hour to set up. Want me to help you build the actual portfolio site itself?
+
+I want to use a page i created in magic patterns. I uploaded the code to git hub. Now I need to host somewhere?
+
+8:51 PM
+Since you already have the code on GitHub, you're most of the way there! Here's what to do:
+
+Option A: GitHub Pages (Free, simplest)
+Go to your repo on GitHub
+Click Settings → Pages
+Under "Source," select Deploy from a branch
+Choose your main branch and / (root) folder, click Save
+Your site will be live at yourusername.github.io/repo-name in a few minutes
+⚠️ One thing to check: GitHub Pages works best with static HTML/CSS/JS. If your Magic Patterns export is a React app, you'll need a small extra step to build it first. What did Magic Patterns give you — plain HTML or a React/Next.js project?
+
+Option B: Vercel (Free, better for React)
+If your Magic Patterns output is React-based, Vercel is easier:
+
+Go to vercel.com and sign in with GitHub
+Click "Add New Project" and select your repo
+Vercel auto-detects React/Next.js and builds it for you
+Live in ~2 minutes at yourproject.vercel.app
+Option C: Netlify (Free, also great for React)
+Same idea as Vercel — connect your GitHub repo and it handles the build automatically.
+
+Then connect your custom domain to whichever host you pick — they all have a simple DNS setup guide.
+
+The key question is: what kind of code did Magic Patterns export? That determines whether GitHub Pages works out of the box or if you need Vercel/Netlify.
+
+React
+
+8:55 PM
+Since it's React, Vercel is your easiest path — it's free and handles React builds automatically. Here's exactly what to do:
+
+Deploy to Vercel (10 minutes)
+Go to vercel.com and click "Sign Up"
+Sign up with your GitHub account (important — this links them)
+Click "Add New Project"
+You'll see your GitHub repos listed — select your portfolio repo
+Vercel auto-detects it's React and fills in the build settings for you
+Click "Deploy" — that's it!
+Your site will be live at yourproject.vercel.app in about 2 minutes.
+
+Connect Your Custom Domain
+In Vercel, go to your project → Settings → Domains
+Type in your domain (e.g. yourname.com) and click Add
+Vercel will show you DNS records to add
+Go to Namecheap (or wherever you bought your domain) → DNS settings
+Add the records Vercel gives you
+Wait 15–30 min to propagate
+Vercel handles HTTPS automatically — no extra steps needed.
+
+Bonus: Auto-deploys Forever
+Once it's connected, every time you push changes to GitHub, Vercel automatically rebuilds and redeploys your site. So your workflow going forward is just:
+
+Edit code → push to GitHub → site updates automatically ✅
+Do you want help with anything else, like tweaking the Magic Patterns design or setting up the GitHub push workflow?
+
+Why can't I use Github pages? I actually changed my mind. Don't want to use the url
+
+8:56 PM
+Good questions! Here's the deal:
+
+Why GitHub Pages Doesn't Work Well with React
+GitHub Pages only serves static files — it can't run a build process. React code needs to be compiled/built first (the npm run build step) before it becomes plain HTML/CSS/JS that a browser can read.
+
+You can technically make it work, but it requires:
+
+Installing a package called gh-pages
+Manually configuring your package.json
+Running the build yourself each time
+Extra config if you're using React Router
+It's doable but annoying — Vercel just does all of that automatically.
+
+Not Wanting the Vercel URL — Totally Fine
+You don't have to use yourproject.vercel.app. Once you connect your custom domain:
+
+Your site lives at yourname.com
+The Vercel URL still works but you just never share it
+Everyone you send to your portfolio uses your custom domain
+So the flow is still: Vercel (free hosting) + your custom domain = yourname.com ✅
+
+Your Options Recap
+Option	Cost	Effort	Custom Domain
+Vercel	Free	Easy	✅ Yes
+Netlify	Free	Easy	✅ Yes
+GitHub Pages	Free	Annoying for React	✅ Yes
+Vercel or Netlify are genuinely the standard for hosting React apps — even professional developers use them. Want help getting it deployed?
+
+No I mean I don't want to use s custom url. If I have the code to you, could you turn it into html?
+
+8:57 PM
+Yes, absolutely! Just share the code and I'll convert it from React to plain HTML/CSS/JS — then you can host it on GitHub Pages for free with no custom domain needed, just your yourusername.github.io URL.
+
+Go ahead and paste the code or upload the files!
+
+
+```App.tsx import React from 'react' import { HeroCell } from './components/HeroCell' import { AboutCell } from './components/AboutCell' import { MetricCell } from './components/MetricCell' import { FeaturedCaseStudyCell } from './components/FeaturedCaseStudyCell' import { SkillsCell } from './compo
+
+pasted
+
+8:58 PM
+
+Check frontend design skill
+Check frontend design skill
+On it! I'll convert all that React code into a single, self-contained HTML file now.
+
+
+Created a file, read a file
+Created a file, read a file
+Here's your portfolio as a single index.html file — no React, no build step, no dependencies. Everything is self-contained.
+
+To put it on GitHub Pages:
+
+In your repo, replace or rename your current files and drop this index.html in the root
+Go to Settings → Pages, set source to your main branch / root
+Done — live at yourusername.github.io/repo-name in a few minutes
+Index
+Code · HTML 
+Can you now also create pages for each of the case studies? So that if you click on one, there is a dedicated page you are taken to to read each case study? You can populate that page with 3 parargaphs of "lorem ipsum" so that I can see where in the code for each page I can type to add details
+
+9:03 PM
+
+Check the existing HTML file
+Check the existing HTML file
+I'll create all 4 case study pages and update the index to link to them.
+
+
+Created a file, ran a command
+Created a file, ran a command
+Now I'll create all 4 case study pages and the updated index:
+
+
+Generate all 4 case study HTML pages
+Generate all 4 case study HTML pages
+Now update the index.html to link to the case study pages:
+
+
+Edited 2 files, read a file
+Edited 2 files, read a file
+Here are all 5 files — the updated portfolio plus 4 case study pages. Here's what to know:
+
+To add your content, each case study page has comments marking exactly where to edit:
+
+<!-- ✏️ TITLE --> — your case study title
+<!-- ✏️ SUBTITLE --> — one-sentence summary
+<!-- ✏️ SECTION 1/2/3 --> — replace the lorem ipsum <p> tags with your real paragraphs
+<!-- ✏️ CALLOUT --> — a highlighted pull quote or key insight
+To upload to GitHub, just push all 5 files into the same folder of your repo — the links between pages are relative, so they'll work automatically on GitHub Pages.
+
+Index
+Code · HTML 
+Case study airbnb
+Code · HTML 
+Case study notion
+Code · HTML 
+Case study shopify
+Code · HTML 
+Case study figma
+Code · HTML 
+I am going to feed you my resume and cover letter, as well as a job description. I want you to keep the main points I am trying to make. Don't delete any bullets, or add any new ones. What I mean specifically is I want you to keep what i have, but optimize the vocabulary I use to match a similar point in the job description. For example, if I say "Created a new operating model with stakeholders and horizontal partners to improve efficiency by 35%", I want you to change that  say "Built  relationships with internal partners to improve efficiency by 35%". Like keep the outcome I am saying I created the same, but do minor tweaks to the vocabulary to make it more similar. Make sense? What do you want me to feed you first?
+
+11:44 PM
+That makes perfect sense! You want vocabulary alignment, not content changes — same bullets, same outcomes, just mirrored language from the job description.
+
+Go ahead and feed me all three at once — resume, cover letter, and job description — and I'll get to work!
+
+
+Pinterest 2026 Michael Price Resume (1).docx
+137 lines
+
+docx
+
+
+2026 Mike Price Cover Letter.docx
+43 lines
+
+docx
+
+Remember, don't get overly aggressive and make drastic changes. Also, feel free to mention the company name in the cover letter, as well as maybe add some key points in the cover letter. But avoid mentioning the name of previous employers and stick with the gist of what i have written in there. Here's the job description: Define, design, and launch thoughtful AI/ML-powered experiences that help users discover, curate, and shop ideas tailored to their unique taste.
+Partner cross-functionally with Engineering, Design, and Data Science to craft seamless and delightful experiences at the intersection of user experience, ML, and AI.
+Set product vision, influence strategy, write requirements, develop hypotheses, and establish success metrics for critical personalization initiatives.
+Identify and prioritize new opportunities to advance the relevance, impact, and sophistication of personalization across Pinterest’s Curation portfolio.
+Autonomously navigate and resolve complex, ambiguous product challenges—and influence product strategy across multiple teams.
+What We’re Looking For:
+Track record in AI/ML products: Experience building and launching personalized experiences, ideally at scale, for consumer products (e-commerce a plus).
+Technical fluency: Strong understanding of AI/ML product development; ability to credibly partner with engineers and data scientists across the stack.
+Sharp communication: Comfortable presenting to executives and cross-functional audiences; excels at simplifying complex technical and product concepts.
+Strategic and customer-centric: Deep empathy for user needs, with an ability to turn rich data and insights into new opportunities and delightful features.
+Collaborative influencer: Ability to build trusted relationships with a variety of internal partners (including Advanced Technology, Growth, Trust & Safety, Monetization, and more) and align them to shared goals.
+Ownership mindset: Skilled at defining what success looks like, rallying teams, and guiding projects from ideation to successful launch.
+Bachelor’s degree in a relevant field such as Computer Science, or equivalent experience.
+
+Show more
+11:52 PM
+
+Ran 2 commands, viewed a file
+Ran 2 commands, viewed a file
+Now I have everything I need. Let me make all the targeted edits to the resume XML:
+
+
+Edited 12 files
+Edited 12 files
+Now pack the resume and move to editing the cover letter:
+
+
+Pack the edited resume
+Pack the edited resume
+Now edit the cover letter:
+
+
+Read cover letter XML
+Read cover letter XML
+Now edit the cover letter paragraphs:
+
+
+Edited 4 files, ran 2 commands, read a file
+Edited 4 files, ran 2 commands, read a file
+Here's a summary of the vocabulary changes made — all outcomes and bullet counts preserved exactly:
+
+Resume — key swaps:
+
+"operating model with stakeholders and horizontal partners" → "trusted relationships with cross-functional partners to align on a new operating model"
+"Product-Market-Fit strategy" → "customer-centric strategy to advance relevance for target users"
+"Established target customer definition" → "Identified target user profiles...to turn rich data and insights into higher ROI"
+"Created customer discovery & feedback funnels" → "Built user discovery & feedback loops to surface deep empathy for user needs"
+"Uncovered a new niche market opportunity" → "Identified and prioritized a new niche market opportunity"
+"AI-driven platform navigation" → "AI/ML-powered personalized navigation experience"
+"end-to-end digital user management experience" → added "seamless" + "users" instead of "customers"
+"Ran innovation experiments" → "Developed and tested hypotheses through innovation experiments"
+"product prioritization framework" → "Established success metrics and a product prioritization framework"
+"Led onboarding initiative" → "Guided...from ideation to launch"
+"partnered with external vendors" → "Built trusted relationships with external partners"
+"Created the organization's first OKR and KPI frameworks" → "Defined success metrics through the organization's first OKR and KPI frameworks"
+Cover letter — key changes:
+
+Added "Pinterest" by name in the opener and AI paragraph
+Added a line about "defining product vision, setting success metrics, and guiding personalized AI-driven experiences from ideation to launch" in para 1
+Para 2 now references "partnering cross-functionally with Engineering and Data Science"
+AI paragraph now references "AI/ML-powered personalized experiences" and "developing hypotheses" — removing the Capital One name per your instructions
+Closing paragraph now mentions "navigate complex, ambiguous product challenges," "influencing strategy across multiple teams," and "aligning internal partners around a shared vision for personalization"
+Pinterest 2026 michael price resume
+Document · DOCX 
+2026 mike price cover letter pinterest
+Document · DOCX 
+What is the public URL for my git hub?
+
+12:34 AM
+Your GitHub Pages URL follows this format:
+
+https://yourusername.github.io
+
+Or if your portfolio is in a repo that isn't named yourusername.github.io, it would be:
+
+https://yourusername.github.io/repo-name
+
+You can find your exact URL by going to your repo on GitHub → Settings → Pages — it'll show the live URL right at the top of that section.
+
+How can I be sure it's open to the public and can be viewed?
+
+12:36 AM
+A few easy ways to check:
+
+1. Open an incognito/private browser window Paste your URL in there — if it loads, anyone can see it. Incognito means you're not logged into GitHub, so it simulates a public visitor.
+
+2. Check your repo visibility
+
+Go to your repo on GitHub
+Click Settings (the gear icon)
+Scroll to the Danger Zone at the bottom
+It will say either "This repository is public" or "This repository is private"
+If it's private, click "Change visibility" and set it to public
+3. Check GitHub Pages is actually enabled
+
+Go to Settings → Pages
+It should say "Your site is live at https://..." with a green checkmark
+If it says nothing or shows an error, Pages isn't enabled yet
+The most common reason a site isn't visible is that the repo is set to private — GitHub Pages on a free account requires the repo to be public. If you're on a paid GitHub plan, private repos can also use Pages, but free accounts need it public.
+
+OK, now I need you to build me some case studies for this portfolio. I want to replace all of the studies we have now. Take my resume that you just worked on and come up with ideas for case studies. I have already created one for a family owned puzzle company. We can leave that for now. Here's a writing sample of one. Pick 3 more and write case studies for them. One should be for Bank of America and focus on fixing a broken interaction model by redefining the poor collaboration that existed and establishing new norms, interaction models, like adding brainstorming sessions, customer journey mapping excercises, regular communication with stakeholders and alinging a close, working relationship with cross- functional partners. Don't use the company names. Just describe them as "A Fortune 500 Bank". Please give me the HTML output so I can copy and paste and also remember that we will need to give the URL's new names to reflect the change from what is there now. Ask me any questions you need for clarity, but give them to me one at a time
+
+Show more
+12:52 AM
+Great, let me start with one clarifying question:
+
+For the writing sample you mentioned — did you want to paste it here so I can match the tone, structure, and length? That'll make sure all 3 new case studies feel consistent with what you already have.
+
+Growing Puzzle Sales One Piece at a Time
+How some minor tweaks and a sub-brand creation increased total sales by 15% and repeat sales by 12% in 30 days.
++12%Repeat Sales Increase
+-15%Total Sales Increase
+3xConversion Rate
+30 daysTime
+The Challenge
+Sales were down. Their core business was selling specialty puzzles to a niche customer base. That niche market was shrinking and sales were down across the board. This family-owned business needed to attract new customers and they needed to do it fast.
+A seemingly small UI change; adding a new filter to their product search; accounted for nearly 30% of searches and had 3x the standard sales conversion rate.
+The Approach
+We created specific customer segments that had unique challenges and objectives. We needed a way to differentiate the person who buys a puzzle once a year for their gransdson's birthday from the avid puzzle enthusiast that has a house filled with them. Presumably, different segments have different methods of shopping for puzzles. One probably goes to target and picks one out based on price. The other probably narrows their search based on theme and reads every word on the packaging before deciding to buy.
+Once we knew which segment we wanted to target, we set up a series of dozens of paid interviews via Upwork. The vetting process was challenging. As we went through each interview, I would feed a trained AI agent the transcript from the recorded interview. It would then go to an opportunity board we created in Figma and populate each column with the appropriate response. It would also identify any unique responses that we received and add a note to track it for possible further investigation.
+After all the interviews we complete, I then had another AI agent synthesize a review deck that laid out all of the answers to our key questions, chart the key metrics we were investigating and lay out a list of recommendations to meet our goals. I touched them up and prioritized them in by relevance, impact and size of effort to execute and presented them back to owners of the business.
+The Outcome
+I made three key recommendations. One was a small UI change. There was a specific piece of information avid puzzle enthusiasts were interested in knowing when purchasing a puzzle. Very few puzzles have it to them in their product listings. 52% of customers mentioned in their interviews. They could add it to every product listing and add it as a sorting tool and search filter. They made these changes and it accounted for nearly 30% of searches and had 3x the standard sales conversion rate.
+The second recommendation was establishing a themed sub-brand series of puzzles that would resonate with customers. This creates familiarity and brand recognition with customers and lead to more repeat sales. Through establishing this sub-brand and then surfacing other puzzles within the sub-brand to those same customers, repeat sales increased by 12% the first month it was live.
+The third and final recommendation came from an entirely different style of puzzle game that we discovered was ballooning in popularity. It was a completely new and different genre of puzzle that the company had never created before, but was massively popular with people aged 25 to 35. Unfortunately, the effort to pursue the opportunity, along with the risk it would introduce was too great and they decided not to implement this recommendation.
+
+Show more
+12:53 AM
+That's a great sample — clear structure, conversational but credible tone, specific metrics, and a nice narrative arc. A few quick questions before I start writing:
+
+For the Bank of America case study — what was the actual outcome or metric you can point to? For example, from your resume it mentions increasing efficiency by 40% and reducing time to market by 35%. Are those the right numbers to highlight, or do you have others you'd prefer to use?
+
+Reduction in time to market by 40%. We delivered a massive front-end rebuild of over 3000 screens across web and android platforms. It was projected to take 17 months. We did it in 10
+
+12:57 AM
+That's a great anchor metric — very concrete and compelling. One more question:
+
+For the other two case studies (not Bank of America, not the puzzle company), which stories from your background are you most proud of or feel would resonate best with a company like Pinterest? Looking at your resume, some candidates could be:
+
+The Capital One AI-driven navigation initiative (40% efficiency gain)
+The Capital One onboarding platform (79% reduction in churn)
+The SeeSnap customer discovery / lead-contact rate work
+Which two feel most relevant to the kind of work you want to be doing next?
+
+I would actually say it's "Launched a seamless end-to-end digital user management experience with an 82% adoption rate with target users, reducing operating expenses by 13%" That was a big project where we took an often used feature that required multiple people go in to a brick and mortar branch together and sign a large stack of paperwork. We built that same process online. A flow where person A invites person B online and person B receives and email with a link and is able to enroll through an enrollment flow. No ink signature. No paperwork all digital. It was featured in Barlow Research's Gamechangers publication. Make sure you mention that. I would say the other one to mention is The Capital One AI-driven navigation initiative (40% efficiency gain)
+
+1:02 AM
+Perfect, that's a compelling story — especially the Barlow Research recognition. One more question before I start writing:
+
+For the AI navigation initiative at Capital One — can you give me a bit more color on what it actually did? For example, was it helping users find features faster within the app/platform? And is there any detail on the problem it was solving before the AI was introduced (e.g., users were getting lost, drop-off was high, support calls were spiking)? Even a sentence or two will help me write something that feels specific rather than generic.
+
+Actually, let's pivot on this last one and talk about the lessons learned in the vibe-coded sportsbetting app that is listed in the resume as side projects. What questions do you have about that?
+
+1:04 AM
+Love that pivot — a behind-the-scenes build story is very on-brand for a PM applying to a tech-forward company like Pinterest. Here are my questions, but I'll give them to you one at a time:
+
+What was the original spark for building it — was it a personal frustration with existing sports betting tools, or more of a "I want to learn what I can build with AI" experiment?
+
+It was both. There are tools that exist for it, but they are either really awful user experiences, or very expensive. Think $250/month on the low side. I wanted to offer a better experience for a lower price ($100 or less/month)
+
+1:06 AM
+Great origin story. Next question:
+
+What was the biggest surprise or lesson learned during the build — something that either went wrong, took way longer than expected, or completely changed how you thought about AI-assisted development?
+
+How iteration was difficult. It was easy to go from plain english idea to first mock-up. But difficult to go from first mock up to a version that is good enough to hand to an AI coding agent to build
+
+1:07 AM
+That's a really insightful PM lesson — the gap between "good enough for a human to understand" and "precise enough for an AI to build from" is something a lot of people don't talk about honestly. One more:
+
+Did you hit a specific moment where something broke badly or had to be rebuilt from scratch — a concrete story that illustrates that iteration challenge? Even a brief example would make the case study feel real rather than theoretical.
+
+I would ask it to make one change, it would undo the last one. When testing with the first version of the coded app, it would flip between the dummy data AI calls for testing and the real production API's every time I navigated to a different page, requiring a manual flip that we added in development to prevent sandbox calls to the production API's but couldnt easily remove it from everywhere is was added when testing in pre-production because the AI agent basically forgot everywhere it had put it while coding. Another good moment was I asked the agent to hide the Admin panel altogether until we had a version closer to production, when we had solid userclass rules to keep it safe, so it came up with a hiding place (Click on a certain menu five times to access it), but we both forgot where it was
+
+1:11 AM
+Ha, that last one is genuinely funny and very relatable. That's plenty — I have everything I need for all three. Let me start writing and I'll go one at a time, starting with the Bank of America case study. Here it is:
+
+Suggested filename: case-study-fortune500-bank.html (replacing case-study-airbnb.html)
+
+html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Building a Growth Engine from Scratch — Mike Price</title>
+  <title>Rebuilding How a Team Ships — Mike Price</title>
+  <style>
+    /* [same shared CSS as your other case study pages] */
+  </style>
+</head>
+Actually, let me just give you the full finished file — same styling as your existing case study pages — ready to drop in:
+
+
+Viewed 2 files
+Viewed 2 files
+Good, I have the full structure. Now writing all 3 case studies:
+
+
+Ran a command, read a file
+Ran a command, read a file
+Here are all three. A few notes on what to do next in your index.html to wire these up:
+
+Replace these old filenames in the case study card links:
+
+case-study-airbnb.html → case-study-fortune500-bank.html
+case-study-notion.html → case-study-digital-enrollment.html
+case-study-figma.html → case-study-live-odds.html
+case-study-shopify.html → your existing puzzle company file (whatever that's named)
+You'll also want to update the card titles, company labels, colors, and metrics in index.html to match. Want me to do that update to index.html for you as well?
+
+Case study fortune500 bank
+Code · HTML 
+Case study digital enrollment
+Code · HTML 
+Case study live odds
+Code · HTML 
+
+
+Want to be notified when Claude responds?
+
+
+
+
+Claude is AI and can make mistakes. Please double-check responses.
+Case study fortune500 bank · HTML
+Copy
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fixing a Broken Team Before Building a Better Product — Mike Price</title>
   <style>
 /* SHARED CASE STUDY PAGE STYLES */
 :root {
@@ -155,65 +626,48 @@ a { text-decoration: none; color: inherit; }
 </head>
 <body>
   <div class="page-wrapper">
-
-    <!-- Back link -->
     <nav class="back-nav">
       <a href="index.html" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Back to Portfolio</a>
     </nav>
-
-    <!-- Hero banner — change the background color below to match your brand preference -->
-    <div class="case-hero" style="background:#FF5A5F;">
-      <div class="case-hero-logo">A</div>
+    <div class="case-hero" style="background:#1A3A6B;">
+      <div class="case-hero-logo">B</div>
     </div>
-
-    <!-- Meta tags — edit the company name and category as needed -->
     <div class="meta-row">
-      <span class="meta-tag accent">Airbnb</span>
-      <span class="meta-tag">Growth Strategy</span>
+      <span class="meta-tag accent">Fortune 500 Bank</span>
+      <span class="meta-tag">Collaboration & Delivery</span>
     </div>
-
-    <!-- ✏️ TITLE: Replace with your case study title -->
-    <h1 class="case-title">Building a Growth Engine from Scratch</h1>
-
-    <!-- ✏️ SUBTITLE: Replace with a one-sentence summary of the project -->
-    <p class="case-subtitle">Developed and launched the host referral program that drove 40% of new host acquisitions in under 12 months.</p>
-
-    <!-- Key metrics — edit the values and labels to match your actual results -->
+    <h1 class="case-title">Fixing a Broken Team Before Building a Better Product</h1>
+    <p class="case-subtitle">How redefining collaboration norms and rebuilding cross-functional relationships at a Fortune 500 bank helped deliver a 3,000-screen platform rebuild 7 months ahead of schedule.</p>
     <div class="metrics-strip">
-      <div class="metric-box"><span class="val">+40%</span><span class="lbl">Host Acquisition</span></div>
-      <div class="metric-box"><span class="val">12mo</span><span class="lbl">Timeline</span></div>
-      <div class="metric-box"><span class="val">3x</span><span class="lbl">ROI on Referral</span></div>
-      <div class="metric-box"><span class="val">#1</span><span class="lbl">Growth Channel</span></div>
+      <div class="metric-box"><span class="val">-40%</span><span class="lbl">Reduction in Time to Market</span></div>
+      <div class="metric-box"><span class="val">10mo</span><span class="lbl">Actual Delivery (vs. 17mo projected)</span></div>
+      <div class="metric-box"><span class="val">3,000+</span><span class="lbl">Screens Rebuilt</span></div>
+      <div class="metric-box"><span class="val">2</span><span class="lbl">Platforms (Web & Android)</span></div>
     </div>
-
-    <!-- ✏️ ARTICLE BODY: Replace all lorem ipsum paragraphs with your content.
-         Each <h2> is a section heading. Each <p> is a paragraph.
-         Add or remove sections as needed. -->
     <div class="article">
 
-    <!-- ✏️ SECTION 1: Replace the heading and paragraph below with your content -->
     <h2>The Challenge</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+    <p>When I joined this engagement, the team had a problem that no roadmap was going to fix. A massive front-end rebuild was on the table — over 3,000 screens across web and Android platforms — and the projected timeline was 17 months. That number alone should have been a red flag. But the deeper issue wasn't scope. It was that the team had no real way of working together.</p>
+    <p>Collaboration was broken. Stakeholders were siloed. Engineers, designers, and business partners operated in parallel but rarely in sync. There were no shared rituals, no alignment sessions, no consistent way to surface blockers or decisions before they became emergencies. Everyone was busy, but the work wasn't moving. The dysfunction was quiet — no one was fighting — but the friction was everywhere, and it was costing the project time before a single sprint had begun.</p>
 
-    <!-- ✏️ CALLOUT: Replace this highlighted quote with a key insight -->
-    <div class="callout"><p>The host referral program became Airbnb's single highest-performing growth channel within its first quarter of operation.</p></div>
+    <div class="callout"><p>The most impactful product decision wasn't a feature or a framework. It was deciding to fix how the team worked together before writing a single line of code.</p></div>
 
-    <!-- ✏️ SECTION 2: Replace the heading and paragraph below with your content -->
     <h2>The Approach</h2>
-    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+    <p>Before touching the product work, I focused on the operating model. I started by mapping the existing interaction patterns — who was talking to whom, how often, and about what. What I found was a web of informal, inconsistent communication. Decisions were being made in hallways or not made at all. Stakeholders felt out of the loop. Engineers were building against requirements that hadn't been properly validated. Designers were handing off work into a void.</p>
+    <p>I introduced a set of structured collaboration rituals that most teams take for granted but this one had never formalized. Regular stakeholder syncs with clear agendas. Joint customer journey mapping sessions that got engineers and business partners looking at the same problems at the same time. Brainstorming sessions with defined outputs rather than open-ended conversations that went nowhere. A shared decision log so nothing fell through the cracks.</p>
+    <p>The goal wasn't to add process for its own sake. It was to create shared context. When everyone understands not just what they're building but why — and when the people making decisions are talking to the people executing them — the work accelerates naturally. Blockers surface earlier. Rework drops. Trust builds. The cross-functional relationships that had been transactional became genuinely collaborative.</p>
 
-    <!-- ✏️ SECTION 3: Replace the heading and paragraph below with your content -->
     <h2>The Outcome</h2>
-    <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consectetur adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore.</p>
+    <p>A project projected to take 17 months was delivered in 10. That's not a small efficiency gain — it's a fundamentally different outcome. The 3,000-screen rebuild shipped across both web and Android platforms, and time to market was reduced by 40%.</p>
+    <p>The metrics matter, but the more important story is what changed underneath them. By the end of the engagement, the team had a working model they owned. Stakeholders knew what was happening and when. Engineers had the context they needed to make good decisions in the moment. The collaboration norms we established didn't just help deliver this project — they became the foundation for how the team would work going forward.</p>
+    <p>It's a reminder that the best thing a product leader can sometimes do is resist the urge to jump straight into the product, and instead spend time making sure the humans building it are set up to succeed.</p>
 
     </div>
-
-    <!-- Page footer -->
     <div class="page-footer">
       <a href="index.html" class="footer-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Back to Portfolio</a>
       <span class="footer-copy">© 2024 Mike Price</span>
     </div>
-
   </div>
 </body>
 </html>
+
