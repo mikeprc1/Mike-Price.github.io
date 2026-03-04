@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI-Powered Search Experience — Mike Price</title>
+  <title>What Building a Sports Betting App Taught Me About AI-Assisted Development — Mike Price</title>
   <style>
 /* SHARED CASE STUDY PAGE STYLES */
 :root {
@@ -155,65 +155,47 @@ a { text-decoration: none; color: inherit; }
 </head>
 <body>
   <div class="page-wrapper">
-
-    <!-- Back link -->
     <nav class="back-nav">
       <a href="index.html" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Back to Portfolio</a>
     </nav>
-
-    <!-- Hero banner — change the background color below to match your brand preference -->
-    <div class="case-hero" style="background:#A259FF;">
-      <div class="case-hero-logo">F</div>
+    <div class="case-hero" style="background:#1B1B2F;">
+      <div class="case-hero-logo">⚡</div>
     </div>
-
-    <!-- Meta tags — edit the company name and category as needed -->
     <div class="meta-row">
-      <span class="meta-tag accent">Figma</span>
-      <span class="meta-tag">AI / Search</span>
+      <span class="meta-tag accent">Side Project</span>
+      <span class="meta-tag">AI-Assisted Development</span>
     </div>
-
-    <!-- ✏️ TITLE: Replace with your case study title -->
-    <h1 class="case-title">AI-Powered Search Experience</h1>
-
-    <!-- ✏️ SUBTITLE: Replace with a one-sentence summary of the project -->
-    <p class="case-subtitle">Shipped Figma's first AI-powered design asset search feature, making asset discovery 3x faster and dramatically improving designer productivity.</p>
-
-    <!-- Key metrics — edit the values and labels to match your actual results -->
+    <h1 class="case-title">What Building a Sports Betting App Taught Me About AI-Assisted Development</h1>
+    <p class="case-subtitle">The honest lessons from vibe-coding a real production app — from first prompt to pre-production meltdown — and what it taught me about the gap between what AI can start and what humans still need to finish.</p>
     <div class="metrics-strip">
-      <div class="metric-box"><span class="val">3x</span><span class="lbl">Faster Discovery</span></div>
-      <div class="metric-box"><span class="val">89%</span><span class="lbl">User Satisfaction</span></div>
-      <div class="metric-box"><span class="val">1M+</span><span class="lbl">Weekly Searches</span></div>
-      <div class="metric-box"><span class="val">DAU+</span><span class="lbl">+22% Active Use</span></div>
+      <div class="metric-box"><span class="val">1,000+</span><span class="lbl">Global Sportsbooks Aggregated</span></div>
+      <div class="metric-box"><span class="val">3</span><span class="lbl">Bet Types Surfaced in Real-Time</span></div>
+      <div class="metric-box"><span class="val"><$100/mo</span><span class="lbl">Target Price Point</span></div>
+      <div class="metric-box"><span class="val">March 2026</span><span class="lbl">Planned Launch</span></div>
     </div>
-
-    <!-- ✏️ ARTICLE BODY: Replace all lorem ipsum paragraphs with your content.
-         Each <h2> is a section heading. Each <p> is a paragraph.
-         Add or remove sections as needed. -->
     <div class="article">
 
-    <!-- ✏️ SECTION 1: Replace the heading and paragraph below with your content -->
-    <h2>The Challenge</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+    <h2>The Idea</h2>
+    <p>The tools that exist for serious sports bettors are either painful to use or painfully expensive. The good ones run $250 a month on the low end. I wanted to build something better — an app that aggregates live odds across 1,000+ global sportsbooks in real time and uses logic to surface the three bet types that sharp bettors actually look for: arbitrage opportunities, positive expected value bets, and negative correlation plays.</p>
+    <p>I also wanted to build it myself. Not because I'm an engineer — I'm not — but because I was genuinely curious what a product manager with a clear vision and access to modern AI coding tools could actually ship. The answer turned out to be: a lot, and also, it's complicated.</p>
 
-    <!-- ✏️ CALLOUT: Replace this highlighted quote with a key insight -->
-    <div class="callout"><p>AI-powered search surfaced relevant assets designers didn't know existed — turning a search problem into a discovery experience.</p></div>
+    <div class="callout"><p>The first version took a plain English idea to a working prototype faster than anything I'd ever seen. The second version nearly broke everything we'd built.</p></div>
 
-    <!-- ✏️ SECTION 2: Replace the heading and paragraph below with your content -->
     <h2>The Approach</h2>
-    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+    <p>The early stages were genuinely remarkable. I described what I wanted in plain English, fed it to an AI coding agent, and watched a working front-end prototype materialize faster than any design-to-dev handoff I'd ever managed in a professional setting. The gap between idea and first working version had never felt smaller.</p>
+    <p>But iteration was a different story entirely. The jump from first prototype to something precise enough to hand back to an AI agent for the next build phase is a problem nobody talks about honestly enough. A human developer can work from a rough brief and ask clarifying questions. An AI agent works from what you give it — and if what you give it is ambiguous, it will make decisions you didn't intend and sometimes quietly undo the ones you did.</p>
+    <p>The most instructive moment came during a period of frequent changes. I'd ask the agent to make one modification, and it would make it — while also reversing something it had done in the previous session. There was no malice in it. The agent simply had no reliable memory of every decision it had made across a long build. It was filling in gaps with its best judgment, and its best judgment didn't always match mine.</p>
 
-    <!-- ✏️ SECTION 3: Replace the heading and paragraph below with your content -->
-    <h2>The Outcome</h2>
-    <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consectetur adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore.</p>
+    <h2>The Lessons</h2>
+    <p>Testing exposed a different class of problem. During pre-production, we were flipping between dummy data for AI calls and real production APIs — a manual toggle we'd added in development to prevent live sandbox calls hitting the production environment. When it came time to test in pre-production, the agent had distributed that toggle throughout the codebase in ways neither of us had fully tracked. Cleaning it up was significantly harder than putting it in had been.</p>
+    <p>The most memorable moment was simpler: I asked the agent to hide the admin panel from the production-facing app until we had proper user permissions built out. It obliged — and came up with a solution on its own. To access the admin panel, you had to click a specific menu item five times in sequence. Clever, actually. The problem was that a week later, neither the agent nor I could remember where it had hidden the trigger. We eventually found it, but it was a useful reminder that AI-generated solutions optimized for the immediate problem don't always account for the humans who have to maintain them.</p>
+    <p>What I came away with is a sharper mental model for how AI-assisted development actually works in practice. The first mile is extraordinary. The middle miles require a level of precision and documentation discipline that most people underestimate. The tooling is improving rapidly — but right now, the biggest unlock isn't prompting better. It's knowing exactly what you want before you ask, and building systems to track what the agent has done so you can course-correct without losing ground. That's a product management problem as much as a technical one.</p>
 
     </div>
-
-    <!-- Page footer -->
     <div class="page-footer">
       <a href="index.html" class="footer-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Back to Portfolio</a>
       <span class="footer-copy">© 2024 Mike Price</span>
     </div>
-
   </div>
 </body>
 </html>
